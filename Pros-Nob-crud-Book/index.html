@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div id="app">
+        <form action="#" class="form">
+          <h1>Create your book here.</h1>
+          <input type="text" name="title"  placeholder="Your text" v-model="title"><br>
+          <input type="text" name="description"  placeholder="description" v-model="body"><br>
+          <input type="number" name="Status" placeholder="User_id" v-model="authorId"><br>
+          <input v-if="isNotUpdate" type="button" value="Submit" @click="createBook" class="btn btn-info">
+          <input v-else type="button" value="update" @click="updateBook" class="btn btn-warning">
+        </form>
+
+        <div class="myCard">
+            <div class="card" v-for="book of books">
+                <div class="card-body">
+                  <h5 class="card-title text-success">{{book.title}}</h5>
+                  <p class="card-title">Author: <span class="text-primary">{{book.author.name}}</span></p>
+                  <p class="card-text">{{book.body}}</p>
+                  <p class="card-text text-muted">{{book.created_at}}</p>
+                  <button @click="deleteBook(book)" class="btn btn-danger">delete</button>
+                  <button @click="toUpdate(book)" class="btn btn-warning">update</button>
+                </div>
+              </div>
+        </div>
+    
+    </div>
+
+</body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/vue@2.6.14"></script>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script src="js/app.js"></script>
+</html>
